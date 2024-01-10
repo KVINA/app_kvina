@@ -1,6 +1,10 @@
 ﻿Use KVINA
 Go
-
+create table Kvina_Guest
+(
+	
+)
+go
 create table Kvina_Employees 
 (
 	employees_id int identity(1,1) primary key,

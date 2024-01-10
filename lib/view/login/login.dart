@@ -1,3 +1,5 @@
+import 'package:app_kvina/toolbox/textbox.dart';
+import 'package:app_kvina/view/login/register.dart';
 import 'package:flutter/material.dart';
 
 class Login extends StatefulWidget {
@@ -23,9 +25,20 @@ class _Login extends State<Login> {
                 fontSize: 24, fontWeight: FontWeight.bold, color: Colors.teal),
           ),
           const SizedBox(height: 100),
-          Username(tecUsername: tecUsername),
+          //Username
+          TextBox(
+            tecTextbox: tecUsername,
+            label: 'Tài khoản',
+            icon: const Icon(Icons.person),
+          ),
           const SizedBox(height: 20),
-          Password(tecPassword: tecPassword),
+          //Password
+          TextBox(
+            tecTextbox: tecPassword,
+            label: 'Mật khẩu',
+            icon: const Icon(Icons.lock),
+            isPassword: true,
+          ),
           const SizedBox(height: 20),
           ElevatedButton.icon(
             onPressed: () {},
@@ -52,45 +65,6 @@ class _Login extends State<Login> {
           const Expanded(child: SizedBox())
         ],
       ),
-    );
-  }
-}
-
-class Username extends StatelessWidget {
-  final TextEditingController tecUsername;
-
-  const Username({
-    super.key,
-    required this.tecUsername,
-  });
-  @override
-  Widget build(BuildContext context) {
-    return TextFormField(
-      decoration: const InputDecoration(
-        labelText: 'Tên người dùng',
-        prefixIcon: Icon(Icons.person),
-        border: OutlineInputBorder(
-            borderRadius: BorderRadius.all(Radius.circular(5))),
-      ),
-      controller: tecUsername,
-    );
-  }
-}
-
-class Password extends StatelessWidget {
-  final TextEditingController tecPassword;
-  const Password({super.key, required this.tecPassword});
-  @override
-  Widget build(BuildContext context) {
-    return TextFormField(
-      obscureText: true,
-      decoration: const InputDecoration(
-        labelText: 'Mật khẩu',
-        prefixIcon: Icon(Icons.lock),
-        border: OutlineInputBorder(
-            borderRadius: BorderRadius.all(Radius.circular(5))),
-      ),
-      controller: tecPassword,
     );
   }
 }
