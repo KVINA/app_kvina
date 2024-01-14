@@ -1,8 +1,11 @@
 ﻿Use KVINA
 Go
-create table Kvina_Guest
+create table Kvina_Guests
 (
-	
+	guests_id int identity(1,1) primary key,
+	guests_mail varchar(200) unique,
+	guests_facebook varchar(200) unique,
+	guests_phone varchar(15),
 )
 go
 create table Kvina_Employees 
