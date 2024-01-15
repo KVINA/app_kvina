@@ -12,7 +12,8 @@ class _Register extends State<Register> {
   final TextEditingController tecMail = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return Form(
+        child: Column(
       children: [
         Wrap(
           children: [
@@ -35,6 +36,6 @@ class _Register extends State<Register> {
           ],
         )
       ],
-    );
+    ));
   }
 }

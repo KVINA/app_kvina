@@ -50,10 +50,9 @@ class FormLogin extends StatefulWidget {
 }
 
 class _FormLogin extends State<FormLogin> {
-  bool _isPasswordVisible = false;
-  bool _rememberMe = false;
   final _email = TextEditingController();
-  final _phone = TextEditingController();
+  final _password = TextEditingController();
+  bool _rememberMe = false;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   Widget lineSpacing() => const SizedBox(height: 16);
   @override
@@ -64,40 +63,25 @@ class _FormLogin extends State<FormLogin> {
         mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          TextBoxFormEmail(
-            tecTextbox: _email,
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+            child: Text(
+              "Welcome to Kvina!",
+              style: Theme.of(context).textTheme.headlineSmall,
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(top: 8.0),
+            child: Text(
+              "Enter your email and password to continue.",
+              style: Theme.of(context).textTheme.bodySmall,
+              textAlign: TextAlign.center,
+            ),
           ),
           lineSpacing(),
-          TextBoxFormPhone(tecTextbox: _phone),
+          TextBoxFormEmail(tecTextbox: _email),
           lineSpacing(),
-          TextFormField(
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return 'Please enter some text';
-              }
-
-              if (value.length < 6) {
-                return 'Password must be at least 6 characters';
-              }
-              return null;
-            },
-            obscureText: !_isPasswordVisible,
-            decoration: InputDecoration(
-                labelText: 'Password',
-                hintText: 'Enter your password',
-                prefixIcon: const Icon(Icons.lock_outline_rounded),
-                border: const OutlineInputBorder(),
-                suffixIcon: IconButton(
-                  icon: Icon(_isPasswordVisible
-                      ? Icons.visibility_off
-                      : Icons.visibility),
-                  onPressed: () {
-                    setState(() {
-                      _isPasswordVisible = !_isPasswordVisible;
-                    });
-                  },
-                )),
-          ),
+          TextBoxFormPassword(tecTextbox: _password),
           lineSpacing(),
           CheckboxListTile(
             value: _rememberMe,
